@@ -13,12 +13,19 @@ This repository contains codes necessary to run the CGNN algorithm.
 
 * `python initialize_input_and_model.py` shows the details about input of CGNN for different datasets.
 *  The examples of CGNN show how to use datasets.
-* You should place dataset in corresponding folder:
+
+You should place dataset in corresponding folder:
+
 `\\heterogeneous network\\lncRNA-disease network\\`: files related with lncRNA-disease network;
+
 `\\heterogeneous network\\micRNA-disease network\\`: files related with micRNA-disease network;
+
 `\\homogeneous network\\PPI\\`: files related with PPI network;
+
 `\\homogeneous network\\DDI\\`: files related with DDI network;
+
 `\\polypharmacy side effect dataset\\`: files related with polypharmacy side effect dataset;
+
 All paths are relative paths
 ### Running code
 The codes consist of **Module of CGNN** and **Example**.
