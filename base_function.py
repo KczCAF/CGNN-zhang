@@ -8,7 +8,7 @@ def get_node_degree(adj_matrix,
     return torch.sum(adj_matrix[node,:])
 
 '''
-For heterogeneous networks and homogeneous networks,
+For heterogeneous networks and homogeneous networks, 
 the function to compute acc and recall is as follows:
 '''
 def Com_acc(output,

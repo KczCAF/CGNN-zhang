@@ -30,7 +30,7 @@ self.gather is weight matrix of layer-wise updating rule.
 
 The output of CGNN is prediction probability of sample.
 
-The structure of node embedding is list to restore feature of two different nodes.
+The structure of node embedding is a list to restore feature of two different nodes.
 '''
 
 '''
@@ -46,6 +46,9 @@ The assignment of size is as follows:
     self.conduit_layer2 = conduit_update_layer(size3=64,size2=964)
     
     self.gather_1 = nn.Linear(size2,size2,bias=True)
+
+The specific usage of 'package' parameter of 'forward' function is shown in 
+example jupyter notebook of CGNN.
 '''
 
 

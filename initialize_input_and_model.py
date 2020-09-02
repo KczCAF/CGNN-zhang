@@ -23,11 +23,11 @@ For heterogeneous networks, the input of CGNN is as follows:
     test_sample:  test_lncdis.txt, test_micdis.txt  
     
     conduit type for train samples:
-    train_group: ld_train group.txt, md_train group.txt  
+    train_group: ld_train_group.txt, md_train_group.txt  
     conduit type for validation samples:
-    valid_group: ld_valid group.txt, md_valid group.txt  
+    valid_group: ld_valid_group.txt, md_valid_group.txt  
     conduit type for test samples:
-    test_group:  ld_test group.txt, md_test group.txt  
+    test_group:  ld_test_group.txt, md_test_group.txt  
     
     initial word embedding of gene node:
     gene_node_embedding: lnc_node_embedding.pth, mic_node_embedding.pth  
@@ -63,16 +63,16 @@ For homogeneous networks, the input of CGNN is as follows:
     degree_matrix: graph_num+degree matrix.pth
     
     train sample for subgraph
-    train_sample: graph_num + train_sample.txt
+    train_sample: graph_num+ train_sample.txt
     
     test sample for subgraph
-    test_sample: graph_num + test_sample.txt
+    test_sample: graph_num+ test_sample.txt
     
     conduit type for train sample
-    train_group: graph_num + train_group.txt
+    train_group: graph_num+ train_group.txt
     
     conduit type for test sample
-    test_group: graph_num + test_group.txt
+    test_group: graph_num+ test_group.txt
     
     initial embedding of all nodes for PPI and DDI
     all_node_embedding: all_node_embedding.pth
@@ -84,10 +84,10 @@ For homogeneous networks, the input of CGNN is as follows:
         graph_node_embedding = all_node_embedding[graph_node_tensor,:]
         
     label for train sample
-    train_label: graph_num + train_label.txt
+    train_label: graph_num+ train_label.txt
     
     label for test sample
-    test_label: graph_num + test_label.txt
+    test_label: graph_num+ test_label.txt
 '''
 
 
@@ -99,12 +99,12 @@ For polypharmacy side effect dataset, the input of CGNN is as follows:
     
     conduit type for sample:
     group: group.txt
-    
-    degree list for drug nodes:
-    degree: degree.txt
-    
-    norm adjacent matrix:
-    norm_adj_matrix: norm_adj_matrix.pth
+
+    adjacent matrix:
+    adj_matrix: adj_matrix.npy
+
+    initial embedding of all drug nodes
+    all_node_embedding: all_node_embedding.pth
     
     positive labels for side effect:
     train_posi_label: train posi label.npy

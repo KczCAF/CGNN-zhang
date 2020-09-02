@@ -10,6 +10,9 @@ to learn feature for two conduit types.
 
 For polypharmacy side effect dataset, we need three different sets of paramter matrix
 to learn feature for three conduit types.
+
+The specific usage of 'package' parameter of 'forward' function is shown in 
+example jupyter notebook of CGNN.
 '''
 
 class conduit_node_learning(nn.Module):

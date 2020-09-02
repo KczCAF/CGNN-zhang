@@ -16,9 +16,9 @@ This repository contains codes necessary to run the CGNN algorithm.
 
 You should place dataset in corresponding folder:
 
-`\\heterogeneous network\\lncRNA-disease network\\`: files related with lncRNA-disease network;
+`\\heterogeneous network\\lncRNA-disease\\`: files related with lncRNA-disease network;
 
-`\\heterogeneous network\\micRNA-disease network\\`: files related with micRNA-disease network;
+`\\heterogeneous network\\micRNA-disease\\`: files related with micRNA-disease network;
 
 `\\homogeneous network\\PPI\\`: files related with PPI network;
 
@@ -40,7 +40,7 @@ As presented in **Section 2** of the paper, the modules and base functions (`.py
 * `python initialize_input_and_model.py` shows the details about input of CGNN for different datasets and how to initialize CGNN, optimizer and loss function.
 #### Example:
 According to the experiments on heterogeneous networks, homogeneous networks and polypharmacy side effect in paper, we present them with examples (`.ipynb`).
-* `CGNN for lncRNA-disease network.ipynb` is the example for heterogeneous networks. If you want to use micRNA-disease network for experiment, you should change the path  to be `.\\heterogeneous network\\micRNA-disease\\` and keep codes invariable in .ipynb file except file name of input.
+* `CGNN for lncRNA-disease network.ipynb` is the example for heterogeneous networks. If you want to use micRNA-disease network for experiment, you should change the path  to be `.\\heterogeneous network\\micRNA-disease\\` and keep codes invariable in .ipynb file except file name of input and parameters of regularization.
 * `CGNN for PPI network.ipynb` is the example for homogeneous networks. If you want to use DDI network for experiment, you should change the path to be `\\homogeneous network\\DDI\\` and keep codes invariable in .ipynb file except `graph_num` and file name of input.
 * `CGNN for polypharmacy side effect dataset.ipynb` is the example for polypharmacy side effect dataset. You should run the codes with memory larger than 32G.
 
