@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 
 '''
-For heterogeneous networks, the input of CGNN is as follows:
+For heterogeneous network data, the input of CGNN is as follows:
     
     adjacent matrix for gene:
     gene_adj: lnc_adj.pth, mic_adj.pth
@@ -45,7 +45,7 @@ For heterogeneous networks, the input of CGNN is as follows:
 
 '''
     
-For homogeneous networks, the input of CGNN is as follows:
+For homogeneous network data, the input of CGNN is as follows:
     
     graph num denotes which subgraph
     graph_num: 'graph'+'i', i=1,2,3,4 
@@ -89,36 +89,8 @@ For homogeneous networks, the input of CGNN is as follows:
     label for test sample
     test_label: graph_num+ test_label.txt
 '''
-
-
 '''
-For polypharmacy side effect dataset, the input of CGNN is as follows:
-    
-    drug-drug interactions:
-    sample: sample.txt
-    
-    conduit type for sample:
-    group: group.txt
-
-    adjacent matrix:
-    adj_matrix: adj_matrix.npy
-
-    initial embedding of all drug nodes
-    all_node_embedding: all_node_embedding.pth
-    
-    positive labels for side effect:
-    train_posi_label: train posi label.npy
-    val_posi_label: val posi label.npy
-    test_posi_label: test posi label.npy
-
-    negative labels for side effect:
-    train_nega_label: train nega label.npy
-    val_nega_label: val nega label.npy
-    test_nega_label: test nega label.npy
-'''
-
-'''
-For heterogeneous networks and homogeneous networks, the labels are as follows, 
+For heterogeneous network data and homogeneous network data, the labels are as follows, 
 where loss function needs the type of label is float.
 '''
 
@@ -127,22 +99,6 @@ tensor_train_label = torch.tensor(train_label).float().cuda()
 tensor_vali_label = torch.tensor(valid_label).float() # only for heterogeneous networks
 
 tensor_test_label = torch.tensor(test_label).float()
-
-'''
-For polypharmacy side effect dataset, the label of CGNN is as follows:
-'''
-    
-train_posi_label = torch.from_numpy(train_posi_label)
-
-val_posi_label = torch.from_numpy(val_posi_label)
-
-test_posi_label = torch.from_numpy(test_posi_label)
-
-train_nega_label = torch.from_numpy(train_nega_label)
-
-val_nega_label = torch.from_numpy(val_nega_label)
-
-test_nega_label = torch.from_numpy(test_nega_label)
 
 '''
 Initializing CGNN model, optimizer and loss function.
@@ -155,7 +111,7 @@ optm = torch.optim.Adam(conduit_GNN.parameters(), lr=0.01)
 BCE = nn.BCELoss()
 
 '''
-When computing the loss of CGNN, we should plus regularization loss.
+When computing the loss of CGNN, we should add up regularization loss.
 '''
 
 loss = BCE(train_output, tensor_train_label) + regu(lambda1, lambda2).cuda()

@@ -2,14 +2,11 @@ import torch
 import torch.nn as nn
 
 '''
-For heterogeneous networks, we need three different sets of paramter matrix
-to learn feature for three conduit types.
+For heterogeneous network data, we need three different sets of weight matrix
+to learn embedding for three conduit types.
 
-For homogeneous networks, we need two different sets of paramter matrix
-to learn feature for two conduit types.
-
-For polypharmacy side effect dataset, we need three different sets of paramter matrix
-to learn feature for three conduit types.
+For homogeneous network data, we need two different sets of weight matrix
+to learn embedding for two conduit types.
 
 The specific usage of 'package' parameter of 'forward' function is shown in 
 example jupyter notebook of CGNN.
@@ -53,20 +50,20 @@ class conduit_node_learning(nn.Module):
             
             left_gate,right_gate,conduit_embedding = 0,0,0
             
-            middle_state,gather_information = 0,0
+            combined_feature,gather_information = 0,0
             
             gather_information += torch.add(node_embedding[i[0],:],node_embedding[i[1],:])
-            #gather_information += torch.add(node_embedding1[i[0],:],node_embedding2[i[1],:])
-            
-            #if package[3][j] == 1:
+#            gather_information += torch.add(node_embedding1[i[0],:],node_embedding2[i[1],:])
                 
             left_gate += torch.sigmoid(self.left_gate1(node_embedding[i[0],:]))
+#             left_gate += torch.sigmoid(self.left_gate1(node_embedding1[i[0],:]))
                 
             right_gate += torch.sigmoid(self.right_gate1(node_embedding[i[1],:]))
+#             right_gate += torch.sigmoid(self.right_gate1(node_embedding2[i[1],:]))
                 
-            middle_state += torch.tanh(self.conduit_update1(gather_information))
+            combined_feature += torch.tanh(self.conduit_update1(gather_information))
 
-            conduit_embedding += left_gate*middle_state + right_gate*middle_state
+            conduit_embedding += left_gate*combined_feature + right_gate*combined_feature
             
             new_conduit_embedding[j,:] += conduit_embedding.reshape(-1)
             

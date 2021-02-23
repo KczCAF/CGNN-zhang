@@ -1,25 +1,15 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 '''
-For heterogeneous networks (lncRNA-disease, micRNA-disease),
-we need two different sets of parameter matrix
-to learn node feature for gene(lncRNA, micRNA) and disease.
-We select sigmoid as active_method.
+For heterogeneous network data (lncRNA-disease, micRNA-disease),
+we need two different sets of weight matrix
+to learn node embedding for gene(lncRNA, micRNA) and disease.
 
-For homogeneous networks (PPI, DDI), there exist nodes with the degree equal to 1,
-which means that it has no neighbor node or it has just one neighbor node.
-We need two different sets of parameter matrix
-to learn node feature for nodes with 1 degree and nodes with larger degree.
-We select sigmoid as active_method.
-
-For polypharmacy side effect dataset, we just need one sets of parameter matrix
-to learn feature for drug nodes.
-We select ReLu as active_method.
-
-nei_update is weight matrix W_Ne for neighbor nodes.
-
-self_node_update is weight matrix W_0 for node itself.
+For homogeneous network data (PPI, DDI), 
+we need two different sets of weight matrix to learn node embedding for 
+nodes with degrees that are less than or equal to 1 and nodes with larger degrees.
 
 The specific usage of 'package' parameter of 'forward' function is shown in 
 example jupyter notebook of CGNN.
@@ -41,7 +31,7 @@ class node_learning(nn.Module):
                 out_size,
                 package,
                 old_node_embedding,
-                active_method,
+                active_method=F.relu,
                 use_divce):
         
         total_node = old_node_embedding.shape[0]
